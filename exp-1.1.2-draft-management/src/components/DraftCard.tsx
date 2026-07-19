@@ -3,9 +3,10 @@ import type { Draft } from "../features/drafts/draftTypes";
 interface DraftCardProps {
   draft: Draft;
   onDelete: (id: string) => void;
+  onEdit: (draft: Draft) => void;
 }
 
-const DraftCard = ({ draft, onDelete }: DraftCardProps) => {
+const DraftCard = ({ draft, onDelete, onEdit }: DraftCardProps) => {
   return (
     <div
       style={{
@@ -29,7 +30,7 @@ const DraftCard = ({ draft, onDelete }: DraftCardProps) => {
 
       <button
         style={{ marginRight: "10px" }}
-        onClick={() => alert("Edit functionality coming in Phase 5")}
+        onClick={() => onEdit(draft)}
       >
         Edit
       </button>

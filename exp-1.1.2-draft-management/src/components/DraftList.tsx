@@ -4,11 +4,13 @@ import type { Draft } from "../features/drafts/draftTypes";
 interface DraftListProps {
   drafts: Draft[];
   onDelete: (id: string) => void;
+  onEdit: (draft: Draft) => void;
 }
 
 const DraftList = ({
   drafts,
   onDelete,
+  onEdit,
 }: DraftListProps) => {
   if (drafts.length === 0) {
     return (
@@ -30,6 +32,7 @@ const DraftList = ({
           key={draft.id}
           draft={draft}
           onDelete={onDelete}
+          onEdit={onEdit}
         />
       ))}
     </div>

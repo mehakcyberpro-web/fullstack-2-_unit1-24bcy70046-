@@ -2,11 +2,19 @@ import { useState } from "react";
 
 interface DraftFormProps {
   onSubmit: (title: string, content: string) => void;
+
+  initialTitle?: string;
+
+  initialContent?: string;
 }
 
-const DraftForm = ({ onSubmit }: DraftFormProps) => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+const DraftForm = ({
+  onSubmit,
+  initialTitle = "",
+  initialContent = "",
+}: DraftFormProps) => {
+  const [title, setTitle] = useState(initialTitle);
+  const [content, setContent] = useState(initialContent);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
