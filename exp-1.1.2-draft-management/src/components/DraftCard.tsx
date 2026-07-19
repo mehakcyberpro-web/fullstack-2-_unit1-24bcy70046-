@@ -1,0 +1,46 @@
+import type { Draft } from "../features/drafts/draftTypes";
+
+interface DraftCardProps {
+  draft: Draft;
+  onDelete: (id: string) => void;
+}
+
+const DraftCard = ({ draft, onDelete }: DraftCardProps) => {
+  return (
+    <div
+      style={{
+        border: "1px solid #ddd",
+        padding: "20px",
+        marginBottom: "20px",
+        borderRadius: "8px",
+      }}
+    >
+      <h3>{draft.title}</h3>
+
+      <p>{draft.content}</p>
+
+      <small>
+        Last Updated:{" "}
+        {new Date(draft.updatedAt).toLocaleString()}
+      </small>
+
+      <br />
+      <br />
+
+      <button
+        style={{ marginRight: "10px" }}
+        onClick={() => alert("Edit functionality coming in Phase 5")}
+      >
+        Edit
+      </button>
+
+      <button
+        onClick={() => onDelete(draft.id)}
+      >
+        Delete
+      </button>
+    </div>
+  );
+};
+
+export default DraftCard;

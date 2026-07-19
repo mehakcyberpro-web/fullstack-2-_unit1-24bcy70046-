@@ -1,13 +1,14 @@
-import { Draft } from "../features/drafts/draftTypes";
+import type { Draft } from "../features/drafts/draftTypes";
 
 const STORAGE_KEY = "drafts";
 
 export const loadDrafts = (): Draft[] => {
-  const data = localStorage.getItem(STORAGE_KEY);
-
-  if (!data) return [];
-
-  return JSON.parse(data);
+  try {
+    const data = localStorage.getItem(STORAGE_KEY);
+    return data ? JSON.parse(data) : [];
+  } catch {
+    return [];
+  }
 };
 
 export const saveDrafts = (drafts: Draft[]) => {
