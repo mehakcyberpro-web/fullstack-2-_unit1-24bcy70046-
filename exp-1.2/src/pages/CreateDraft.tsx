@@ -25,9 +25,12 @@ const CreateDraft = () => {
 
   const draftId = searchParams.get("id");
 
-  const existingDraft = useAppSelector(
-    draftId ? selectDraftById(draftId) : () => undefined
-  );
+  const draftSelector = draftId
+    ? selectDraftById(draftId)
+    : () => undefined;
+
+  const existingDraft =
+    useAppSelector(draftSelector);
 
   const handleSubmit = async (
   title: string,

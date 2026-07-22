@@ -1,6 +1,6 @@
 import DraftCard from "./DraftCard";
 import type { Draft } from "../features/drafts/draftTypes";
-
+import { memo } from "react";
 interface DraftListProps {
   drafts: Draft[];
   onDelete: (id: string) => void;
@@ -39,4 +39,4 @@ const DraftList = ({
   );
 };
 
-export default DraftList;
+export default memo(DraftList);

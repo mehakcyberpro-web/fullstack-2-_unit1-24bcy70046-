@@ -1,10 +1,29 @@
+import { createSelector } from "@reduxjs/toolkit";
 import type { RootState } from "../../app/store";
 
-export const selectDrafts = (state: RootState) =>
-  state.drafts.drafts;
+export const selectDraftState = (state: RootState) => state.drafts;
 
-export const selectDraftById =
-  (id: string) => (state: RootState) =>
-    state.drafts.drafts.find(
-      (draft) => draft.id === id
-    );
+export const selectDrafts = createSelector(
+  [selectDraftState],
+  (draftState) => draftState.drafts
+);
+
+export const selectDraftCount = createSelector(
+  [selectDrafts],
+  (drafts) => drafts.length
+);
+
+export const selectDraftById = (id: string) =>
+  createSelector([selectDrafts], (drafts) =>
+    drafts.find((draft) => draft.id === id)
+  );
+
+export const selectRecentDrafts = createSelector(
+  [selectDrafts],
+  (drafts) =>
+    [...drafts].sort(
+      (a, b) =>
+        new Date(b.updatedAt).getTime() -
+        new Date(a.updatedAt).getTime()
+    )
+);

@@ -1,4 +1,6 @@
 import type { Draft } from "../features/drafts/draftTypes";
+import { memo } from "react";
+
 
 interface DraftCardProps {
   draft: Draft;
@@ -44,4 +46,4 @@ const DraftCard = ({ draft, onDelete, onEdit }: DraftCardProps) => {
   );
 };
 
-export default DraftCard;
+export default memo(DraftCard);

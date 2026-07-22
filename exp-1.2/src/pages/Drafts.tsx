@@ -1,5 +1,10 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import {
+    selectDrafts,
+    selectDraftCount,
+    selectRecentDrafts,
+} from "../features/drafts/draftSelectors";
 
 import Navbar from "../components/Navbar";
 import DraftList from "../components/DraftList";
@@ -11,8 +16,6 @@ import {
   setDrafts,
 } from "../features/drafts/draftSlice";
 
-import { selectDrafts } from "../features/drafts/draftSelectors";
-
 import {
   loadDrafts,
   saveDrafts,
@@ -23,7 +26,9 @@ const Drafts = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const drafts = useAppSelector(selectDrafts);
+const drafts = useAppSelector(selectDrafts);
+const recentDrafts = useAppSelector(selectRecentDrafts);
+const draftCount = useAppSelector(selectDraftCount);
 
   useEffect(() => {
     dispatch(setDrafts(loadDrafts()));
