@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { useAppSelector } from "../app/hooks";
+import { selectUserRole } from "../features/auth/authSelectors";
 
 const Navbar = () => {
+  const role = useAppSelector(selectUserRole);
   return (
     <nav
       style={{
@@ -19,10 +22,14 @@ const Navbar = () => {
           Home
         </Link>
 
-        <Link to="/create" style={{ color: "white", textDecoration: "none" }}>
-          Create Draft
+        {(role === "admin" || role === "editor") && (
+        <Link
+          to="/create"
+         style={{ color: "white", textDecoration: "none" }}
+        >
+        Create Draft
         </Link>
-
+      )}
         <Link to="/drafts" style={{ color: "white", textDecoration: "none" }}>
           My Drafts
         </Link>
