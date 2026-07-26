@@ -80,25 +80,29 @@ const DraftForm = ({
         }}
       />
 
-      <input
-        type="date"
-        value={scheduledDate}
-        onChange={(e) => setScheduledDate(e.target.value)}
-        style={{
-          padding: "12px",
-          fontSize: "16px",
-        }}
-      />
+      <label htmlFor="scheduledDate">Schedule Date</label>
+<input
+  id="scheduledDate"
+  type="date"
+  value={scheduledDate}
+  onChange={(e) => setScheduledDate(e.target.value)}
+  style={{
+    padding: "12px",
+    fontSize: "16px",
+  }}
+/>
 
-      <input
-        type="time"
-        value={scheduledTime}
-        onChange={(e) => setScheduledTime(e.target.value)}
-        style={{
-          padding: "12px",
-          fontSize: "16px",
-        }}
-      />
+      <label htmlFor="scheduledTime">Schedule Time</label>
+<input
+  id="scheduledTime"
+  type="time"
+  value={scheduledTime}
+  onChange={(e) => setScheduledTime(e.target.value)}
+  style={{
+    padding: "12px",
+    fontSize: "16px",
+  }}
+/>
 
       <button
         type="submit"

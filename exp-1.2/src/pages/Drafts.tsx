@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect , useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import {
     selectDrafts,
@@ -38,12 +38,12 @@ const draftCount = useAppSelector(selectDraftCount);
     saveDrafts(drafts);
   }, [drafts]);
 
-  const handleDelete = (id: string) => {
-    dispatch(deleteDraft(id));
-  };
-  const handleEdit = (draft: Draft) => {
+  const handleDelete = useCallback((id: string) => {
+  dispatch(deleteDraft(id));
+}, [dispatch]);
+  const handleEdit = useCallback((draft: Draft) => {
   navigate(`/create?id=${draft.id}`);
-};
+}, [navigate]);
 
   return (
     <>
