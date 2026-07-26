@@ -34,26 +34,30 @@ const CreateDraft = () => {
 
   const handleSubmit = async (
   title: string,
-  content: string
+  content: string,
+  scheduledDate: string,
+  scheduledTime: string
 ) => {
   setLoading(true);
 
   const draft = {
-    id: existingDraft
-      ? existingDraft.id
-      : generateId(),
+  id: existingDraft
+    ? existingDraft.id
+    : generateId(),
 
-    title,
+  title,
 
-    content,
+  content,
 
-    createdAt: existingDraft
-      ? existingDraft.createdAt
-      : new Date().toISOString(),
+  createdAt: existingDraft
+    ? existingDraft.createdAt
+    : new Date().toISOString(),
 
-    updatedAt: new Date().toISOString(),
-  };
+  updatedAt: new Date().toISOString(),
 
+  scheduledDate,
+  scheduledTime,
+};
   await mockApi(draft);
 
   if (existingDraft) {
@@ -89,10 +93,12 @@ const CreateDraft = () => {
           onSubmit={handleSubmit}
           initialTitle={existingDraft?.title}
           initialContent={existingDraft?.content}
+          initialScheduledDate={existingDraft?.scheduledDate}
+          initialScheduledTime={existingDraft?.scheduledTime}
         />
       )}
-    </>
-  );
+      </>
+  )
 };
 
 export default CreateDraft;

@@ -1,33 +1,50 @@
 import { useState } from "react";
 
 interface DraftFormProps {
-  onSubmit: (title: string, content: string) => void;
+  onSubmit: (
+    title: string,
+    content: string,
+    scheduledDate: string,
+    scheduledTime: string
+  ) => void;
 
   initialTitle?: string;
-
   initialContent?: string;
+  initialScheduledDate?: string;
+  initialScheduledTime?: string;
 }
 
 const DraftForm = ({
   onSubmit,
   initialTitle = "",
   initialContent = "",
+  initialScheduledDate = "",
+  initialScheduledTime = "",
 }: DraftFormProps) => {
   const [title, setTitle] = useState(initialTitle);
   const [content, setContent] = useState(initialContent);
+  const [scheduledDate, setScheduledDate] = useState(initialScheduledDate);
+  const [scheduledTime, setScheduledTime] = useState(initialScheduledTime);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!title.trim() || !content.trim()) {
+    if (
+      !title.trim() ||
+      !content.trim() ||
+      !scheduledDate ||
+      !scheduledTime
+    ) {
       alert("Please fill all fields.");
       return;
     }
 
-    onSubmit(title, content);
+    onSubmit(title, content, scheduledDate, scheduledTime);
 
     setTitle("");
     setContent("");
+    setScheduledDate("");
+    setScheduledTime("");
   };
 
   return (
@@ -63,6 +80,26 @@ const DraftForm = ({
         }}
       />
 
+      <input
+        type="date"
+        value={scheduledDate}
+        onChange={(e) => setScheduledDate(e.target.value)}
+        style={{
+          padding: "12px",
+          fontSize: "16px",
+        }}
+      />
+
+      <input
+        type="time"
+        value={scheduledTime}
+        onChange={(e) => setScheduledTime(e.target.value)}
+        style={{
+          padding: "12px",
+          fontSize: "16px",
+        }}
+      />
+
       <button
         type="submit"
         style={{
@@ -79,4 +116,4 @@ const DraftForm = ({
   );
 };
 
-export default DraftForm;
+export default DraftForm; 

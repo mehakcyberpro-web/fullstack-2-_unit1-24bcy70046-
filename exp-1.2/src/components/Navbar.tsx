@@ -30,6 +30,7 @@ const Navbar = () => {
         Create Draft
         </Link>
       )}
+      <Link to="/calendar">Calendar</Link>
         <Link to="/drafts" style={{ color: "white", textDecoration: "none" }}>
           My Drafts
         </Link>

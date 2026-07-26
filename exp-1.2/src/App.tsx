@@ -12,6 +12,8 @@ import RoleProtectedRoute from "./components/RoleProtectedRoute";
 import { useAppDispatch } from "./app/hooks";
 import { restoreSession } from "./features/auth/authSlice";
 
+import Calendar from "./pages/Calendar";
+
 function App() {
   const dispatch = useAppDispatch();
 
@@ -61,7 +63,17 @@ function App() {
           </ProtectedRoute>
         }
       />
+      
+      <Route
+        path="/calendar"
+        element={
+          <ProtectedRoute>
+            <Calendar />
+          </ProtectedRoute>
+        }
+      />
     </Routes>
+    
   );
 }
 
