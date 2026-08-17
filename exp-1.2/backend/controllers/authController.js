@@ -3,21 +3,21 @@ import jwt from "jsonwebtoken";
 const users = [
   {
     id: 1,
-    name: "Rahul",
+    name: "mehak",
     email: "admin@example.com",
     password: "123456",
     role: "admin",
   },
   {
     id: 2,
-    name: "John",
+    name: "Asees",
     email: "editor@example.com",
     password: "123456",
     role: "editor",
   },
   {
     id: 3,
-    name: "Alex",
+    name: "prixcy",
     email: "viewer@example.com",
     password: "123456",
     role: "viewer",

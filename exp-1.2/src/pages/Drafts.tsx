@@ -1,10 +1,6 @@
 import { useEffect , useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-    selectDrafts,
-    selectDraftCount,
-    selectRecentDrafts,
-} from "../features/drafts/draftSelectors";
+import { selectDrafts } from "../features/drafts/draftSelectors";
 
 import Navbar from "../components/Navbar";
 import DraftList from "../components/DraftList";
@@ -26,9 +22,7 @@ const Drafts = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-const drafts = useAppSelector(selectDrafts);
-const recentDrafts = useAppSelector(selectRecentDrafts);
-const draftCount = useAppSelector(selectDraftCount);
+  const drafts = useAppSelector(selectDrafts);
 
   useEffect(() => {
     dispatch(setDrafts(loadDrafts()));
@@ -38,12 +32,19 @@ const draftCount = useAppSelector(selectDraftCount);
     saveDrafts(drafts);
   }, [drafts]);
 
-  const handleDelete = useCallback((id: string) => {
-  dispatch(deleteDraft(id));
-}, [dispatch]);
-  const handleEdit = useCallback((draft: Draft) => {
-  navigate(`/create?id=${draft.id}`);
-}, [navigate]);
+  const handleDelete = useCallback(
+    (id: string) => {
+      dispatch(deleteDraft(id));
+    },
+    [dispatch]
+  );
+
+  const handleEdit = useCallback(
+    (draft: Draft) => {
+      navigate(`/create?id=${draft.id}`);
+    },
+    [navigate]
+  );
 
   return (
     <>

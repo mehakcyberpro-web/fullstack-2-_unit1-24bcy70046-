@@ -15,13 +15,14 @@ const Home = () => {
           marginTop: "80px",
         }}
       >
-        <h1>Draft Management System</h1>
+        <h1>α-Draft Management System</h1>
         <h2>Welcome {user?.name}</h2>
 
         <p>Role: {user?.role}</p>
 
         <p>
-          Create, manage and organize your drafts using Redux Toolkit.
+          Create, manage and organize your drafts using Redux Toolkit.for all social platforms one platform to post everywhere
+          
         </p>
       </div>
     </>

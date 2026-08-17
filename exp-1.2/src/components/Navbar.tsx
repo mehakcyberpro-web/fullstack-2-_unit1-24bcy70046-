@@ -15,7 +15,7 @@ const Navbar = () => {
         color: "white",
       }}
     >
-      <h2>Draft Management</h2>
+      <h2>α-Draft Management</h2>
 
       <div style={{ display: "flex", gap: "20px" }}>
         <Link to="/" style={{ color: "white", textDecoration: "none" }}>
@@ -30,10 +30,12 @@ const Navbar = () => {
         Create Draft
         </Link>
       )}
-      <Link to="/calendar">Calendar</Link>
-        <Link to="/drafts" style={{ color: "white", textDecoration: "none" }}>
-          My Drafts
-        </Link>
+      <Link to="/calendar" style={{ color: "white", textDecoration: "none" }}>
+        Calendar
+      </Link>
+      <Link to="/drafts" style={{ color: "white", textDecoration: "none" }}>
+        My Drafts
+      </Link>
       </div>
     </nav>
   );
